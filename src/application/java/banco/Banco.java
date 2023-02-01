@@ -41,10 +41,10 @@ public class Banco {
     }
 
     public int generateId() {
-        Integer min = 100000;
-        Integer max = 999999;
+        int min = 100000;
+        int max = 999999;
 
-        Integer id = (int) (Math.random() * (max - min + 1) + min);
+        int id = (int) (Math.random() * (max - min + 1) + min);
 
         if (clientes.containsKey(id)) {
             return generateId();

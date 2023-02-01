@@ -5,12 +5,9 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import banco.Banco;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-
 public class BancoTest {
 
-    DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
     @Test
     void criaBanco() {
         Banco banco = new Banco(1, "Banco do Brasil");

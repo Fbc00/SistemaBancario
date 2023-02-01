@@ -2,9 +2,6 @@ package banco;
 
 import Pessoas.Pessoa;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-
 public class Cliente extends Pessoa {
     private final Integer id;
     private String endereco;
