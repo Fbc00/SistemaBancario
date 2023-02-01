@@ -21,14 +21,35 @@ public class Banco {
     }
 
     public void adicionaCliente(Cliente cliente) {
-        if(clientes.containsKey(cliente.getId())) {
-            throw new RuntimeException("Cliente já cadastrado");
-        }
-        clientes.put(cliente.getId(), cliente);
+           if (this.getCliente(cliente.getCpf()) != null) {
+               throw new RuntimeException("Cliente já cadastrado");
+           }
+            clientes.put(cliente.getId(), cliente);
     }
 
     public Cliente getCliente(Integer id) {
         return clientes.get(id);
+    }
+
+    public  Cliente getCliente(String cpf) {
+        for (Cliente cliente : clientes.values()) {
+            if (cliente.getCpf().equals(cpf)) {
+                return cliente;
+            }
+        }
+        return null;
+    }
+
+    public int generateId() {
+        Integer min = 100000;
+        Integer max = 999999;
+
+        Integer id = (int) (Math.random() * (max - min + 1) + min);
+
+        if (clientes.containsKey(id)) {
+            return generateId();
+        }
+        return id;
     }
 
 

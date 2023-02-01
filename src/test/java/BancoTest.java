@@ -5,7 +5,12 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import banco.Banco;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 public class BancoTest {
+
+    DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
     @Test
     void criaBanco() {
         Banco banco = new Banco(1, "Banco do Brasil");
@@ -16,18 +21,17 @@ public class BancoTest {
     @Test
     void adicionaCliente() {
         Banco banco = new Banco(1, "Banco do Brasil");
-        Cliente cliente = new Cliente(1, "João", "123.456.789-00");
+        Cliente cliente = new Cliente("João", "123456789", "2002-12-03", "passsagem nazaré", banco.generateId());
         banco.adicionaCliente(cliente);
-        assertEquals(banco.getCliente(1), cliente);
-
+        assertEquals(banco.getCliente(cliente.getId()), cliente);
     }
 
     @Test
     void naoAdicionaClienteCadastrado() {
         Banco banco = new Banco(1, "Banco do Brasil");
-        Cliente cliente = new Cliente(1, "João", "123.456.789-00");
+        Cliente cliente = new Cliente("João", "123456789", "2002-12-03", "passsagem nazaré", banco.generateId());
         banco.adicionaCliente(cliente);
-        Cliente cliente2 = new Cliente(1, "João", "123.456.789-00");
+        Cliente cliente2 = new Cliente("Pedro", "123456789", "1999-12-03", "ufpa varzea", banco.generateId());
         assertThrows(RuntimeException.class, () -> banco.adicionaCliente(cliente2));
     }
 

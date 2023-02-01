@@ -1,14 +1,18 @@
 package banco;
 
-public class Cliente {
-    private final Integer id;
-    private String nome;
-    private final String cpf;
+import Pessoas.Pessoa;
 
-    public Cliente(Integer id, String nome, String cpf) {
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
+public class Cliente extends Pessoa {
+    private final Integer id;
+    private String endereco;
+
+    public Cliente(String nome, String cpf, String dataNascimento, String endereco, Integer id) {
+        super(nome, cpf, dataNascimento);
+        this.endereco = endereco;
         this.id = id;
-        this.nome = nome;
-        this.cpf = cpf;
     }
 
     public Integer getId() {
@@ -22,4 +26,6 @@ public class Cliente {
     public String getCpf() {
         return cpf;
     }
+
+
 }
