@@ -5,6 +5,8 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import banco.Banco;
 
+import java.util.List;
+
 public class BancoTest {
 
 
@@ -33,4 +35,9 @@ public class BancoTest {
     }
 
 
+    @Test
+    void listServicos() {
+        Banco banco = new Banco(1, "Banco do Brasil");
+        assertEquals(banco.ListServicos(), List.of("Conta", "ContaPoupanca", "ContaCorrente", "CartaoCredito", "emprestimo"));
+    }
 }

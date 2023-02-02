@@ -1,11 +1,18 @@
 package banco;
 
+import Servicos.Servico;
+
 import java.util.HashMap;
+import java.util.List;
 
 public class Banco {
     private Integer id;
     private String nome;
     private HashMap<Integer, Cliente> clientes = new HashMap<>();
+
+
+    private final List<String> servicos = List.of("Conta", "ContaPoupanca", "ContaCorrente", "CartaoCredito", "emprestimo");
+
 
     public Banco(Integer id, String nome) {
         this.id = id;
@@ -52,5 +59,9 @@ public class Banco {
         return id;
     }
 
+
+    public List ListServicos() {
+        return this.servicos;
+    }
 
 }
