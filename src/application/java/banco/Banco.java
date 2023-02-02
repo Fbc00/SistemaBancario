@@ -10,6 +10,8 @@ public class Banco {
     private String nome;
     private HashMap<Integer, Cliente> clientes = new HashMap<>();
 
+    private  HashMap<Integer, Servico> servicosWithCliente = new HashMap<>();
+
 
     private final List<String> servicos = List.of("Conta", "ContaPoupanca", "ContaCorrente", "CartaoCredito", "emprestimo");
 
@@ -27,11 +29,12 @@ public class Banco {
         return nome;
     }
 
-    public void adicionaCliente(Cliente cliente) {
+    public void adicionaCliente(Cliente cliente, Servico servico) {
            if (this.getCliente(cliente.getCpf()) != null) {
                throw new RuntimeException("Cliente já cadastrado");
            }
             clientes.put(cliente.getId(), cliente);
+            servicosWithCliente.put(cliente.getId(), servico);
     }
 
     public Cliente getCliente(Integer id) {
@@ -62,6 +65,10 @@ public class Banco {
 
     public List ListServicos() {
         return this.servicos;
+    }
+
+    public Servico getServico(Cliente id) {
+        return servicosWithCliente.get(id.getId());
     }
 
 }

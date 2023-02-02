@@ -21,7 +21,7 @@ public class Conta implements Servico {
         this.dataInicio = LocalDate.now();
         this.banco = banco;
 
-        banco.adicionaCliente(cliente);
+        banco.adicionaCliente(cliente, this);
 
     }
 
